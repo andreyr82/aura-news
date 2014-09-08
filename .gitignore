@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+app/bower_components
+app/scripts
+npm-debug.log
+/lib
+/tmp
+/dist
+
+
+.idea
