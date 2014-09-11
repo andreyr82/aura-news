@@ -6,7 +6,8 @@ define(['text!./model.hbs'], function(tpl) {
     return {
         type: 'Backbone',
         initialize: function() {
-            this.html(template({'model': this.model}));
+            var hostname = new URL(this.model.get('link')).hostname;
+            this.html(template({'model': this.model, 'hostname':hostname}));
         }
     }
 });
