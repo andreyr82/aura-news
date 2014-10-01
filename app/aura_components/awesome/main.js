@@ -17,7 +17,7 @@ define(['text!./awesome.hbs'], function (tpl) {
             collection.forEach(this.addOne, this);
         },
         addOne:function(post){
-            var container = $("<li></li>");
+            var container = $('<div class="list-group-item"></div>');
             this.$find('div.list-group').append(container);
             this.sandbox.start([{ name: 'model', options: { el: container, model: post }}]);
         }
