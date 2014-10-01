@@ -18,7 +18,7 @@ define(['text!./awesome.hbs'], function (tpl) {
         },
         addOne:function(post){
             var container = $("<li></li>");
-            this.$find('ul').append(container);
+            this.$find('div.list-group').append(container);
             this.sandbox.start([{ name: 'model', options: { el: container, model: post }}]);
         }
     };
