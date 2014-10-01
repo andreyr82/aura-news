@@ -1,0 +1,12 @@
+.bs-callout-info h1, .bs-callout-info h2 {
+    font-size:24px
+}
+
+.bs-callout-info img {
+    margin: 5px;
+    max-width: 100px;
+}
+
+.clear {
+    clear: both;
+}

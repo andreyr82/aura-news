@@ -1,1 +1,10 @@
-<a href="<%= model.get('link') %>" class="list-group-item"><img height='16' width='16' src= 'http://favicon.yandex.ru/favicon/<%= hostname %>' ><%= model.get('title') %></a>
+<h4 class="list-group-item-heading">
+    <a href="<%= model.get('link') %>">
+        <img height='16' width='16' src= 'http://favicon.yandex.ru/favicon/<%= hostname %>' >
+        <%= model.get('title') %>
+    </a>
+</h4>
+<div class="bs-callout-info">
+    <%= model.get('description') %>
+</div>
+<div class="clear"></div>
