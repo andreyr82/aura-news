@@ -1,4 +1,4 @@
-define(['text!./awesome.hbs'], function (tpl) {
+define(['text!./posts.hbs'], function (tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',
@@ -19,7 +19,7 @@ define(['text!./awesome.hbs'], function (tpl) {
         addOne:function(post){
             var container = $('<div class="list-group-item"></div>');
             this.$find('div.list-group').append(container);
-            this.sandbox.start([{ name: 'model', options: { el: container, model: post }}]);
+            this.sandbox.start([{ name: 'post', options: { el: container, model: post }}]);
         }
     };
 });
