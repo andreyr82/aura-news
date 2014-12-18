@@ -13,7 +13,7 @@ define(['models/post', 'collections/posts'], function(PostModel, PostsCollection
         return {
             initialize: function(app) {
                 app.core.mediator.on('pipes.loaded', function(models) {
-                    Posts.update(models);
+                    Posts.set(models);
                     app.core.mediator.emit('posts.updated', Posts);
                 });
             }

@@ -6,7 +6,7 @@
   } else {
     require.config({
       paths: {
-        jquery:     'bower_components/jquery/jquery'
+        jquery:     'bower_components/jquery/dist/jquery'
       },
       shim: {
         jquery:     { exports: '$' }

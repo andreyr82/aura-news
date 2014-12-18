@@ -10,3 +10,33 @@
 .clear {
     clear: both;
 }
+
+.header-panel {
+    background-color: #009587;
+    height: 100px;
+    position: fixed;
+    width:100%;
+}
+
+.header-panel h1 {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 400;
+    bottom: 10px;
+    padding-left: 35px;
+}
+
+.pages {
+    position: relative;
+    top: 50px;
+    right: 0;
+    padding: 0;
+    overflow: auto;
+    z-index: 4;
+}
+
+.update-button button {
+    top: 70px;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 28px!important;
+}

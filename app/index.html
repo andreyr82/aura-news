@@ -6,12 +6,26 @@
     <!-- build:css css/application.css -->
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bower_components/bootstrap-material-design/dist/css/material-wfont.min.css">
+    <link rel="stylesheet" href="./bower_components/bootstrap-material-design/dist/css/ripples.min.css">
     <!-- endbuild -->
     <script data-main="app" src="./bower_components/requirejs/require.js"></script>
   </head>
   <body>
-    <div class="container">
-        <div class="col-md-12">
+    <div class="header-panel shadow-z-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <h1>Новости Рыбинска</h1>
+                </div>
+                <div class="col-md-2 pull-right update-button">
+                    <div data-aura-component="button"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pages">
+        <div class="col-md-8 col-md-offset-2">
             <div data-aura-component="posts"></div>
         </div>
     </div>

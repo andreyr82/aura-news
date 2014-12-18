@@ -12,7 +12,7 @@ define(function() {
                 },
                 shim: {
                     backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] },
-						  bootstrap: { exports: 'Bootstrap', deps: ['jquery'] }
+					bootstrap: { exports: 'Bootstrap', deps: ['jquery'] }
                 }
             },
             initialize: function(app) {

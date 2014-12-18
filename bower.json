@@ -6,6 +6,7 @@
         "aura": "latest",
         "backbone.localStorage": "latest",
         "backbone": "0.9.10",
-        "bootstrap": "latest"
+        "bootstrap": "latest",
+        "bootstrap-material-design": "latest"
     }
 }
