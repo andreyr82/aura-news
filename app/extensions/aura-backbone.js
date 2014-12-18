@@ -7,10 +7,12 @@ define(function() {
             require: {
                 paths: {
                     backbone: 'bower_components/backbone/backbone',
-                    underscore: 'bower_components/underscore/underscore'
+                    underscore: 'bower_components/underscore/underscore',
+						  bootstrap: 'bower_components/bootsrap/dist/js/bootstrap',
                 },
                 shim: {
-                    backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] }
+                    backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] },
+						  bootstrap: { exports: 'Bootstrap', deps: ['jquery'] }
                 }
             },
             initialize: function(app) {
