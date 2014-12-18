@@ -1,5 +1,5 @@
 /**
- * Created by Андрей on 18.12.14.
+ * Created by РђРЅРґСЂРµР№ on 18.12.14.
  */
 define(['text!./viewer.hbs'], function(tpl) {
     var template = _.template(tpl);
