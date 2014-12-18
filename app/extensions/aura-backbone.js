@@ -8,7 +8,7 @@ define(function() {
                 paths: {
                     backbone: 'bower_components/backbone/backbone',
                     underscore: 'bower_components/underscore/underscore',
-						  bootstrap: 'bower_components/bootsrap/dist/js/bootstrap',
+						  bootstrap: 'bower_components/bootstrap/dist/js/bootstrap',
                 },
                 shim: {
                     backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] },
