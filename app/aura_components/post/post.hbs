@@ -1,5 +1,5 @@
 <h4 class="list-group-item-heading">
-    <a href="<%= model.get('link') %>">
+    <a class="showPost" href="#">
         <img height='16' width='16' src= 'http://favicon.yandex.ru/favicon/<%= hostname %>' >
         <%= model.get('title') %>
     </a>
@@ -8,3 +8,4 @@
     <%= model.get('description') %>
 </div>
 <div class="clear"></div>
+<a href="<%= model.get('link') %>">Источник..</a>
