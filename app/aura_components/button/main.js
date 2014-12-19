@@ -12,8 +12,10 @@ define(['text!./button.hbs'], function(tpl) {
             this.sandbox.emit('pipes.update');
         },
         initialize: function() {
-            this.sandbox.emit('pipes.update');
             this.html(template());
         }
+		  afterAppStart: function(app) {
+				this.sandbox.emit('pipes.update');
+		  }
     }
 });
