@@ -13,6 +13,7 @@ define(['text!./button.hbs'], function(tpl) {
         },
         initialize: function() {
             this.html(template());
+            this.sandbox.emit('pipes.update');
         }
     }
 });
