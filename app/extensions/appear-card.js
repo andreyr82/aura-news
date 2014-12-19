@@ -6,8 +6,10 @@ define(['extensions/jquery.appear.js'], function(Plugin) {
 				 // add class called “appeared” for each appeared element
 				 $(this).addClass("appeared");
 			  });
-			  $('.page').appear({force_process: true});
 			});
-		 }
+			app.sandbox.appear = function() {
+				$('.page').appear({force_process: true});
+			}
+		 },
 	 }
 });
