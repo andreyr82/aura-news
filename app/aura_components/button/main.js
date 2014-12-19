@@ -13,7 +13,7 @@ define(['text!./button.hbs'], function(tpl) {
         },
         initialize: function() {
             this.html(template());
-        }
+        },
 		  afterAppStart: function(app) {
 				this.sandbox.emit('pipes.update');
 		  }
