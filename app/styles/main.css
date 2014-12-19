@@ -60,6 +60,8 @@
 
 .spinner-container .wrapper {
 	display:flex;
+	width:100%;
+	height:100%;
 	-webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
