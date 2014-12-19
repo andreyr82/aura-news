@@ -41,3 +41,9 @@
     font-size: 28px!important;
     z-index: 99;
 }
+
+.modal-backdrop {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
