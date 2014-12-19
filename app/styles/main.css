@@ -31,7 +31,8 @@
     top: 50px;
     right: 0;
     padding: 0;
-    overflow: auto;
+    overflow-x: auto;
+	 overflow-y: hidden;
     z-index: 4;
 }
 
@@ -183,7 +184,7 @@
     opacity: 0;
 }
  
-.page.appeared{
+.page.appeared {
     -webkit-transform: translate3d(0px, 0px, 0px) rotateX(0)  scale(1, 1);
     -moz-transform:  translate3d(0px, 0px, 0px) rotateX(0)  scale(1, 1);
     transform: translate3d(0px, 0px, 0px) rotateX(0)  scale(1, 1);
