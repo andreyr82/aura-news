@@ -43,7 +43,7 @@
 }
 
 .modal-backdrop {
-	position: fixed;
-	height: 100%;
-	width: 100%;
+	position: fixed !important;
+	height: 100% !important;
+	width: 100% !important;
 }
