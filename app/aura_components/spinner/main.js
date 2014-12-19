@@ -8,12 +8,15 @@ define(['text!./spinner.hbs'], function(tpl) {
 		  render: function() {
 				this.html(template());
 		  },
-		  toggle: function() {
-				this.$find('.spinner-container').toggle();
+		  show: function() {
+				this.$find('.spinner-container').show();
+		  },
+		  hide: function() {
+				this.$find('.spinner-container').hide();
 		  },
         initialize: function() {
-            this.sandbox.on('pipes.update', this.toggle, this);
-            this.sandbox.on('posts.updated', this.toggle, this);
+            this.sandbox.on('pipes.update', this.show, this);
+            this.sandbox.on('posts.updated', this.hide, this);
 				this.render(template());
         }
     }
