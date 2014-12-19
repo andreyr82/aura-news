@@ -8,6 +8,7 @@ define(['text!./posts.hbs'], function (tpl) {
         render:function(collection) {
             this.html(template());
             collection.forEach(this.addOne, this);
+				this.sandbox.appear();
         },
         addOne:function(post){
             var container = $('<div class="well page"></div>');
