@@ -9,7 +9,7 @@ define(['text!./spinner.hbs'], function(tpl) {
 				this.html(template());
 		  },
 		  toggle: function() {
-				this.$find('.spinner').toggle();
+				this.$find('.spinner-container').toggle();
 		  },
         initialize: function() {
             this.sandbox.on('pipes.update', this.toggle, this);
