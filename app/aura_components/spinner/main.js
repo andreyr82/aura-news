@@ -10,7 +10,7 @@ define(['text!./spinner.hbs'], function(tpl) {
 		  },
 		  toggle: function() {
 				this.$find('.spinner').toggle();
-		  }
+		  },
         initialize: function() {
             this.sandbox.on('pipes.update', this.toggle, this);
             this.sandbox.on('posts.updated', this.toggle, this);
