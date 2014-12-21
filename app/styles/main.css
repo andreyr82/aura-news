@@ -16,23 +16,28 @@
     height: 100px;
     position: fixed;
     width:100%;
+    z-index: 99;
+}
+
+.header-panel .title {
+    top: 0;
+    position:absolute;
+    width:100%;
+    bottom: 10px;
 }
 
 .header-panel h1 {
     color: #FFF;
     font-size: 20px;
     font-weight: 400;
-    bottom: 10px;
-    padding-left: 35px;
 }
 
 .pages {
     position: relative;
-    top: 50px;
+    top: 120px;
     right: 0;
     padding: 0;
-	 overflow: hidden;
-    z-index: 4;
+	overflow: hidden;
 }
 
 .update-button button {
