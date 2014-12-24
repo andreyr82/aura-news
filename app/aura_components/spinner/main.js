@@ -16,7 +16,7 @@ define(['text!./spinner.hbs'], function(tpl) {
 		},
         initialize: function() {
             this.render(template());
-            this.sandbox.on('pipes.update', this.show, this);
+            this.sandbox.on('feed.update', this.show, this);
             this.sandbox.on('posts.updated', this.hide, this);
         }
     }

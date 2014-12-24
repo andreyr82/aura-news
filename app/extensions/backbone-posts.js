@@ -12,7 +12,7 @@ define(['models/post', 'collections/posts'], function(PostModel, PostsCollection
         });
         return {
             initialize: function(app) {
-                app.core.mediator.on('pipes.loaded', function(models) {
+                app.core.mediator.on('feed.loaded', function(models) {
                     Posts.set(models);
                     app.core.mediator.emit('posts.updated', Posts);
                 });

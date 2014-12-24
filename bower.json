@@ -1,12 +1,16 @@
 {
-    "name": "aura-boilerplate",
-    "version": "0.1.0",
-    "dependencies": {
-        "jquery": "~1.10.x",
-        "aura": "latest",
-        "backbone.localStorage": "latest",
-        "backbone": "0.9.10",
-        "bootstrap": "latest",
-        "bootstrap-material-design": "latest"
-    }
+  "name": "aura-boilerplate",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "~1.10.x",
+    "aura": "latest",
+    "backbone.localStorage": "latest",
+    "backbone": "0.9.10",
+    "bootstrap": "latest",
+    "bootstrap-material-design": "latest"
+  },
+  "resolutions": {
+    "backbone": "~1.0.0",
+    "jquery": "~2.1.1"
+  }
 }

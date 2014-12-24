@@ -3,13 +3,13 @@ define(['extensions/jquery.appear.js'], function(Plugin) {
 		 initialize: function (app) {
 			$(function() {
 			  $(document.body).on('appear', '.page', function(e, $affected) {
-				 // add class called “appeared” for each appeared element
+				 // add class called ï¿½appearedï¿½ for each appeared element
 				 $(this).addClass("appeared");
 			  });
 			});
 			app.sandbox.appear = function() {
 				$('.page').appear({force_process: true});
 			}
-		 },
+		 }
 	 }
 });

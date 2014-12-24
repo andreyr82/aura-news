@@ -6,12 +6,14 @@ define(function() {
         return {
             require: {
                 paths: {
-                    backbone: 'bower_components/backbone/backbone',
-                    underscore: 'bower_components/underscore/underscore',
-					bootstrap: 'bower_components/bootstrap/dist/js/bootstrap'
+                    backbone: 'bower_components/backbone/backbone-min',
+                    backboneLocalstorage: 'bower_components/backbone.localStorage/backbone.localStorage',
+                    underscore: 'bower_components/underscore/underscore-min',
+					bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min'
                 },
                 shim: {
                     backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] },
+                    backboneLocalstorage: { exports: 'Store', deps: ['backbone'] },
 					bootstrap: { exports: 'Bootstrap', deps: ['jquery'] }
                 }
             },
