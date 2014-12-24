@@ -1,15 +1,15 @@
 /**
- * Created by Андрей on 07.09.14.
+ * Created by Андрей on 25.12.2014.
  */
-define(['text!./post.hbs'], function(tpl) {
+define(['text!./feed.hbs'], function(tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',
         events: {
-            'click .showPost' : 'show'
+            'click' : 'add'
         },
-        show: function() {
-            this.sandbox.emit('post.show', this.model);
+        add: function() {
+            this.sandbox.emit('feed.add', this.model);
         },
         destroy: function() {
             this.remove();

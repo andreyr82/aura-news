@@ -3,7 +3,8 @@ require(['bower_components/aura/lib/aura'], function (Aura) {
         .use('extensions/aura-backbone')
         .use('extensions/aura-googlefeed')
         .use('extensions/backbone-posts')
-        //.use('extensions/aura-pipes')
+        .use('extensions/feeds')
+        .use('extensions/find-feeds')
         .use('extensions/appear-card')
         .start({ components: 'body' }).then(function () {
             console.warn('App started...');

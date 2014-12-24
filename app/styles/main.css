@@ -241,3 +241,9 @@
 .search .form-group input::-moz-placeholder          {color:lightgray;}/* Firefox 19+ */
 .search .form-group input:-moz-placeholder           {color:lightgray;}/* Firefox 18- */
 .search .form-group input:-ms-input-placeholder      {color:lightgray;}
+
+.search .results {
+    display: none;
+    position: absolute;
+    z-index: 999;
+}
