@@ -31,7 +31,7 @@ define(['text!./search.hbs'], function (tpl) {
             }
         },
         addOne:function(feed) {
-            var container = $('<div></div>');
+            var container = $('<div class="feed"></div>');
             this.$find('.results').append(container);
             this.sandbox.start([{ name: 'feed', options: { el: container, model: feed }}]);
         },
