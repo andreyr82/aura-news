@@ -10,8 +10,11 @@ define(['text!./search.hbs'], function (tpl) {
             'keyup input' : 'find'
         },
         find: function() {
-            if(this.$find('input').val().length >= 3)
-                this.sandbox.emit('feed.find', this.$find('input').val());
+            if(this.$find('input').val().length >= 3) {
+                this.sandbox.emit('findfeed.find', this.$find('input').val());
+            } else {
+                this.$find('.results').hide();
+            }
         },
         showPopover: function(feeds) {
             if(feeds.length == 0)
@@ -30,15 +33,20 @@ define(['text!./search.hbs'], function (tpl) {
                 this.$find('.results').hide();
             }
         },
+        closeResults: function() {
+            this.$find('.results').hide();
+            this.$find('input').val('');
+        },
         addOne:function(feed) {
             var container = $('<div class="feed"></div>');
             this.$find('.results').append(container);
-            this.sandbox.start([{ name: 'feed', options: { el: container, model: feed }}]);
+            this.sandbox.start([{ name: 'findfeed', options: { el: container, model: feed }}]);
         },
         initialize: function () {
             this.html(template());
             this.sandbox.on('feeds.loaded', this.showPopover, this);
-            this.sandbox.on('feeds.updated', this.showResults, this);
+            this.sandbox.on('findfeeds.updated', this.showResults, this);
+            this.sandbox.on('feed.add', this.closeResults, this);
         }
     }
 });

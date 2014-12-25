@@ -1,8 +1,2 @@
 <ul>
-  <% feeds.forEach(function(feed) { %>
-  <li class="withripple" data-url="<%= feed.get('url') %>">
-    <img class="fav" height='16' width='16' src= 'http://favicon.yandex.ru/favicon/<%= new URL(feed.get('link')).hostname %>' >
-    <%= feed.get('title') %>
-  </li>
-  <% }); %>
 </ul>

@@ -22,13 +22,13 @@ define({
                 }
             });
         };
-        app.core.mediator.on('feed.find', function (query) {
+        app.core.mediator.on('findfeed.find', function (query) {
             feedProcess(findURL, query, function (result) {
-                app.core.mediator.emit('feed.finded', result.responseData.entries);
+                app.core.mediator.emit('findfeed.finded', result.responseData.entries);
             });
         });
-        app.core.mediator.on('feed.update', function (query) {
-            feedProcess(loadURL, query, function (result) {
+        app.core.mediator.on('feed.update', function (feed) {
+            feedProcess(loadURL, feed.get('url'), function (result) {
                 app.core.mediator.emit('feed.loaded', result.responseData.feed.entries);
             });
         });

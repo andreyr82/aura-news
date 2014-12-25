@@ -6,14 +6,14 @@ define(['text!./feeds.hbs'], function (tpl) {
         template = _.template(tpl);
     return {
         type: 'Backbone',
-        events: {
-            //'click .showPost' : 'show'
-        },
-        //show: function() {
-        //   this.sandbox.emit('post.show', this.model);
-        //},
         render: function (feeds) {
             this.html(template({'feeds': feeds}));
+            feeds.forEach(this.addOne, this);
+        },
+        addOne:function(feed) {
+            var container = $('<div></div>');
+            this.$find('ul').append(container);
+            this.sandbox.start([{ name: 'feed', options: { el: container, model: feed }}]);
         },
         initialize: function () {
             this.sandbox.on('feeds.loaded', this.render, this);

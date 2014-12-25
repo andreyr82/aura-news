@@ -5,23 +5,26 @@ define(['collections/feeds'], function (FeedsCollection) {
     return {
         initialize: function (app) {
             var Feeds = new FeedsCollection;
-            app.sandbox.mvc = {
-                collections: {'Feeds': Feeds}
-            };
-            Feeds.on('add', function (model, collection) {
-                app.core.mediator.emit('feeds.add', this.arguments);
-            });
-            app.core.mediator.on('feeds.load', function () {
+            var load = function () {
                 Feeds.fetch({
                     success: function () {
                         app.core.mediator.emit('feeds.loaded', Feeds);
                     }
                 });
-            });
-            app.core.mediator.on('feed.add', function (feed) {
-                Feeds.add(feed);
-                feed.save();
-            })
+            };
+            var add = function (feed) {
+                if(Feeds.where({'url':feed.get('url')}).length == 0)
+                {
+                    Feeds.add(feed);
+                    feed.save();
+                    load();
+                }
+            };
+            app.sandbox.mvc = {
+                collections: {'Feeds': Feeds}
+            };
+            app.core.mediator.on('feeds.load', load);
+            app.core.mediator.on('feed.add', add);
         }
     }
 });

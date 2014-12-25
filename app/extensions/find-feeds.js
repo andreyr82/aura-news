@@ -8,14 +8,14 @@ define(['collections/feeds'], function (FeedsCollection) {
             app.sandbox.mvc = {
                 collections: {'FindFeeds': FindFeeds}
             };
-            FindFeeds.on('add', function (model, collection) {
-                //app.core.mediator.emit('feeds.add', this.arguments);
-            });
-            app.core.mediator.on('feed.finded', function (models) {
+            app.core.mediator.on('findfeed.finded', function (models) {
                 FindFeeds.set(models);
-                app.core.mediator.emit('feeds.updated', FindFeeds);
+                app.core.mediator.emit('findfeeds.updated', FindFeeds);
 
             });
+            app.core.mediator.on('feed.add', function() {
+                FindFeeds.reset();
+            })
         }
     }
 });

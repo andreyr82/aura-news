@@ -9,11 +9,10 @@ define(['text!./button.hbs'], function(tpl) {
             'click button' : 'update'
         },
         update: function () {
-            this.sandbox.emit('feed.update', 'http://habrahabr.ru/rss/best/');
+            //this.sandbox.emit('feed.update', 'http://habrahabr.ru/rss/best/');
         },
         initialize: function() {
             this.html(template());
-            this.sandbox.emit('feed.update', 'http://habrahabr.ru/rss/best/');
         }
     }
 });

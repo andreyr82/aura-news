@@ -1,15 +1,15 @@
 /**
- * Created by andrey on 26.12.14.
+ * Created by Андрей on 25.12.2014.
  */
-define(['text!./feed.hbs'], function(tpl) {
+define(['text!./findfeed.hbs'], function(tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',
         events: {
-            'click' : 'update'
+            'click' : 'add'
         },
-        update: function() {
-            this.sandbox.emit('feed.update', this.model);
+        add: function() {
+            this.sandbox.emit('feed.add', this.model);
         },
         destroy: function() {
             this.remove();
