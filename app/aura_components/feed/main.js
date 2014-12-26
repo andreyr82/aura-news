@@ -6,10 +6,15 @@ define(['text!./feed.hbs'], function(tpl) {
     return {
         type: 'Backbone',
         events: {
-            'click' : 'update'
+            'click' : 'update',
+            'click .close' : 'deleteFeed'
         },
         update: function() {
             this.sandbox.emit('feed.update', this.model);
+        },
+        deleteFeed: function(event) {
+            event.stopPropagation();
+            this.model.destroy();
         },
         destroy: function() {
             this.remove();

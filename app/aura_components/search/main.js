@@ -12,6 +12,7 @@ define(['text!./search.hbs'], function (tpl) {
         find: function() {
             if(this.$find('input').val().length >= 3) {
                 this.sandbox.emit('findfeed.find', this.$find('input').val());
+                this.$find('.results').show();
             } else {
                 this.$find('.results').hide();
             }
@@ -21,14 +22,10 @@ define(['text!./search.hbs'], function (tpl) {
                 this.$find('input').popover({'placement':'bottom'}).popover('show');
         },
         showResults: function(feeds) {
-            if(feeds.length > 0) {
+            if(feeds.length > 0 && this.$find('.results').css('display') != 'none') {
+                this.$find('.results').css('maxHeight',$(window).height()-51);
                 this.$find('.results').html(feeds);
-                this.$find('.results').css({
-                    'left':this.$find('.form-group').offset().left,
-                    'top':this.$find('.form-group').offset().top + this.$find('.form-group').height()
-                });
                 feeds.forEach(this.addOne, this);
-                this.$find('.results').show();
             } else {
                 this.$find('.results').hide();
             }
