@@ -19,8 +19,12 @@ define(['text!./search.hbs'], function (tpl) {
             }
         },
         showPopover: function(feeds) {
-            if(feeds.length == 0)
-                this.$find('input').popover({'placement':'bottom'}).popover('show');
+            if(feeds.length == 0) {
+                this.$find('input').popover({'placement': 'bottom'}).popover('show');
+                this.$find('input').one('click', function(){
+                    $(this).popover('destroy');
+                });
+            }
         },
         showResults: function(feeds) {
             if(feeds.length > 0 && this.$find('.results').css('display') != 'none') {
