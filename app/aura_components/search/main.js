@@ -46,7 +46,10 @@ define(['text!./search.hbs'], function (tpl) {
         },
         initialize: function () {
             this.html(template());
-            this.sandbox.on('feeds.loaded', this.showPopover, this);
+            //this.sandbox.on('feeds.loaded', this.showPopover, this);
+            $.when(this.sandbox.loaded).done($.proxy(function(feeds) {
+                this.showPopover(feeds)
+            }, this));
             this.sandbox.on('findfeeds.updated', this.showResults, this);
             this.sandbox.on('feed.add', this.closeResults, this);
             $(document).mouseup($.proxy(function (e) {

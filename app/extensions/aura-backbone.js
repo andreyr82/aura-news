@@ -19,8 +19,8 @@ define(function() {
             },
             initialize: function(app) {
                 Backbone = require('backbone');
-                app.core.mvc    = Backbone;
-                app.sandbox.mvc = Backbone;
+                //app.core.mvc    = Backbone;
+                //app.sandbox.mvc = Backbone;
                 app.components.addType('Backbone', Backbone.View.prototype);
             },
             afterAppStart: function(app) {

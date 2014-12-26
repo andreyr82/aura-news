@@ -5,9 +5,6 @@ define(['collections/feeds'], function (FeedsCollection) {
     return {
         initialize: function (app) {
             var FindFeeds = new FeedsCollection;
-            app.sandbox.mvc = {
-                collections: {'FindFeeds': FindFeeds}
-            };
             app.core.mediator.on('findfeed.finded', function (models) {
                 FindFeeds.set(models);
                 app.core.mediator.emit('findfeeds.updated', FindFeeds);

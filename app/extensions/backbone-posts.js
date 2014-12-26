@@ -5,9 +5,6 @@ define(['collections/posts'], function (PostsCollection) {
     return {
         initialize: function (app) {
             var Posts = new PostsCollection;
-            app.sandbox.mvc = {
-                collections: {'Posts': Posts}
-            };
             Posts.on('add', function (model, collection) {
                 app.core.mediator.emit('posts.add', this.arguments);
             });

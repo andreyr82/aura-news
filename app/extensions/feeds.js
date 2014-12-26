@@ -4,11 +4,13 @@
 define(['collections/feeds'], function (FeedsCollection) {
     return {
         initialize: function (app) {
+            var def = new $.Deferred();
             var Feeds = new FeedsCollection;
             var load = function () {
                 Feeds.fetch({
                     success: function () {
                         app.core.mediator.emit('feeds.loaded', Feeds);
+                        def.resolve(Feeds);
                     }
                 });
             };
@@ -20,9 +22,7 @@ define(['collections/feeds'], function (FeedsCollection) {
                     load();
                 }
             };
-            app.sandbox.mvc = {
-                collections: {'Feeds': Feeds}
-            };
+            app.sandbox.loaded = def.promise();
             app.core.mediator.on('feeds.load', load);
             app.core.mediator.on('feed.add', add);
         }
