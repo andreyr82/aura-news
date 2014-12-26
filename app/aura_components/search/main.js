@@ -7,6 +7,7 @@ define(['text!./search.hbs'], function (tpl) {
         type: 'Backbone',
         events: {
             'click button' : 'find',
+            'click .close' : 'close',
             'keyup input' : 'find'
         },
         find: function() {
@@ -30,6 +31,10 @@ define(['text!./search.hbs'], function (tpl) {
                 this.$find('.results').hide();
             }
         },
+        close: function(e) {
+            e.stopPropagation();
+            this.closeResults();
+        },
         closeResults: function() {
             this.$find('.results').hide();
             this.$find('input').val('');
@@ -44,6 +49,12 @@ define(['text!./search.hbs'], function (tpl) {
             this.sandbox.on('feeds.loaded', this.showPopover, this);
             this.sandbox.on('findfeeds.updated', this.showResults, this);
             this.sandbox.on('feed.add', this.closeResults, this);
+            $(document).mouseup($.proxy(function (e) {
+                if ($(e.target).closest('.search').length == 0) {
+                    this.$find('.results').hide();
+                    this.closeResults();
+                }
+            }, this));
         }
     }
 });
