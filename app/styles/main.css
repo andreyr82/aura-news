@@ -2,10 +2,10 @@
     font-size:24px
 }
 
-/*.bs-callout-info img {*/
+.bs-callout-info img {
     /*margin: 5px;*/
-    /*max-width: 100px;*/
-/*}*/
+    max-width: 100%;
+}
 
 .clear {
     clear: both;
@@ -260,7 +260,7 @@
 .search .form-group .close {
     z-index: 3;
     position: absolute;
-    left: 325px;
+    right: 90px;
     top: 5px;
     color: white;
 }

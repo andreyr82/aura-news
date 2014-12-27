@@ -17,9 +17,8 @@ define(['collections/feeds'], function (FeedsCollection) {
             var add = function (feed) {
                 if(Feeds.where({'url':feed.get('url')}).length == 0)
                 {
-                    Feeds.add(feed);
-                    feed.save();
-                    load();
+                    Feeds.create(feed.attributes);
+                    app.core.mediator.emit('feed.added', Feeds);
                 }
             };
             app.sandbox.loaded = def.promise();

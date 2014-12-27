@@ -17,6 +17,7 @@ define(['text!./feeds.hbs'], function (tpl) {
         },
         initialize: function () {
             this.sandbox.on('feeds.loaded', this.render, this);
+            this.sandbox.on('feed.added', this.render, this);
             this.sandbox.emit('feeds.load');
         }
     }
