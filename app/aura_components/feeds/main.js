@@ -1,7 +1,7 @@
 /**
  * Created by am.rachkov on 24.12.2014.
  */
-define(['text!./feeds.hbs'], function (tpl) {
+define(['underscore', 'text!./feeds.hbs'], function (_, tpl) {
     var
         template = _.template(tpl);
     return {

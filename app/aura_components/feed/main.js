@@ -1,7 +1,7 @@
 /**
  * Created by andrey on 26.12.14.
  */
-define(['text!./feed.hbs'], function(tpl) {
+define(['underscore', 'text!./feed.hbs'], function(_, tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',

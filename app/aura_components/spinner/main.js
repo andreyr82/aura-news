@@ -1,7 +1,7 @@
 /**
  * Created by Андрей on 19.12.14.
  */
-define(['text!./spinner.hbs'], function(tpl) {
+define('__component__$spinner@default/main', ['underscore', 'text!./spinner.hbs'], function(_, tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',

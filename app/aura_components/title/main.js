@@ -1,7 +1,7 @@
 /**
  * Created by andrey on 26.12.14.
  */
-define(['text!./title.hbs'], function(tpl) {
+define(['underscore', 'text!./title.hbs'], function(_, tpl) {
     var template = _.template(tpl);
     return {
         render: function (model) {

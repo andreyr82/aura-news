@@ -1,7 +1,7 @@
 /**
  * Created by Андрей on 18.12.14.
  */
-define(['text!./viewer.hbs'], function(tpl) {
+define(['underscore', 'text!./viewer.hbs', 'bootstrap'], function(_, tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',

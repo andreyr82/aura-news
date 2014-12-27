@@ -16,8 +16,6 @@ require.config( {
 });
 require([
         'bower_components/aura/lib/aura',
-        'underscore',
-        'bootstrap',
         'aura_components/spinner/main',
         'aura_components/title/main',
         'aura_components/button/main',

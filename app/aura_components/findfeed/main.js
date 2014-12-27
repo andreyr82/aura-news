@@ -1,7 +1,7 @@
 /**
  * Created by Андрей on 25.12.2014.
  */
-define(['text!./findfeed.hbs'], function(tpl) {
+define(['underscore', 'text!./findfeed.hbs'], function(_, tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',

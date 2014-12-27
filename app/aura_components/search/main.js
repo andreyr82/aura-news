@@ -1,7 +1,7 @@
 /**
  * Created by am.rachkov on 24.12.2014.
  */
-define(['text!./search.hbs'], function (tpl) {
+define(['underscore', 'text!./search.hbs', 'bootstrap'], function (_, tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',
