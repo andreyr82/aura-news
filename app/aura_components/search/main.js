@@ -1,13 +1,16 @@
 /**
  * Created by am.rachkov on 24.12.2014.
  */
-define(['underscore', 'text!./search.hbs', 'bootstrap'], function (_, tpl) {
-    var template = _.template(tpl);
+define(['underscore', 'text!./search.hbs', 'text!./findfeed.hbs', 'bootstrap'], function (_, tpl, feedtpl) {
+    var
+        template = _.template(tpl),
+        feedtemplate = _.template(feedtpl);
     return {
         type: 'Backbone',
         events: {
             'click button' : 'find',
             'click .close' : 'close',
+            'click .results .feed' : 'addFeed',
             'keyup input' : 'find'
         },
         find: function() {
@@ -29,7 +32,7 @@ define(['underscore', 'text!./search.hbs', 'bootstrap'], function (_, tpl) {
         showResults: function(feeds) {
             if(feeds.length > 0 && this.$find('.results').css('display') != 'none') {
                 this.$find('.results').css('maxHeight',$(window).height()-51);
-                this.$find('.results').html(feeds);
+                this.$find('.results').html('');
                 feeds.forEach(this.addOne, this);
             } else {
                 this.$find('.results').hide();
@@ -44,13 +47,13 @@ define(['underscore', 'text!./search.hbs', 'bootstrap'], function (_, tpl) {
             this.$find('input').val('');
         },
         addOne:function(feed) {
-            var container = $('<div class="feed"></div>');
-            this.$find('.results').append(container);
-            this.sandbox.start([{ name: 'findfeed', options: { el: container, model: feed }}]);
+            this.$find('.results').append(feedtemplate({model:feed}));
+        },
+        addFeed: function(e) {
+            this.sandbox.emit('feed.add', this.sandbox.mvc.collections.FindFeeds.get(e.currentTarget.dataset.cid));
         },
         initialize: function () {
             this.html(template());
-            //this.sandbox.on('feeds.loaded', this.showPopover, this);
             $.when(this.sandbox.loaded).done($.proxy(function(feeds) {
                 this.showPopover(feeds)
             }, this));

@@ -1,6 +1,7 @@
+<div class="well page">
 <h4 class="list-group-item-heading">
-    <a class="showPost" href="javascript:void(0)">
-        <img class="fav" height='16' width='16' src= 'http://favicon.yandex.ru/favicon/<%= hostname %>' >
+    <a class="showPost" href="<%= model.get('link') %>" target="_blank">
+        <img class="fav" height='16' width='16' src= 'http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>' >
         <%= model.get('title') %>
     </a>
 </h4>
@@ -11,3 +12,4 @@
   <span class="label label-primary"><%= category %></span>
   <% }); %>
 <div class="clear"></div>
+</div>

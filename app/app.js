@@ -21,7 +21,6 @@ require([
         'aura_components/button/main',
         'aura_components/search/main',
         'aura_components/posts/main',
-        'aura_components/post/main',
         'aura_components/feeds/main',
         'aura_components/feed/main'
     ], function (Aura) {

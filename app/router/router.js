@@ -1,20 +1,12 @@
 /**
  * Created by am.rachkov on 26.12.2014.
  */
-define(['../bower_components/backbone/backbone'], function (Backbone) {
+define(['backbone'], function (Backbone) {
 
    return Backbone.Router.extend({
 
       routes: {
-         "": "subsList",
-         "user/list": "userList",
-         "user/new": "userNew",
-         "user/edit/:id": "userEdit",
-         "user/delete/:id": "userDelete",
-         "subs/list": "subsList",
-         "subs/new": "subsNew",
-         "subs/edit/:id": "subsEdit",
-         "subs/read/:id": "subsRead"
+         "": "subsList"
       },
 
       // Subs:

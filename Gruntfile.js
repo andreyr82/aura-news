@@ -1,5 +1,4 @@
 /*global module:true*/
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -184,7 +183,6 @@ module.exports = function (grunt) {
     'clean:dist',
     'concat',
     'jshint',
-    'handlebars',
     'useminPrepare',
     'uglify',
     'imagemin',
