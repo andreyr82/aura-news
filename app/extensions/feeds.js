@@ -26,9 +26,8 @@ define(['collections/feeds'], function (FeedsCollection) {
                 app.core.mediator.emit('feed.destroyed', Feeds);
             };
             var update = function(route) {
-                if(Feeds.where({'url':route}).length > 0) {
-                    app.core.mediator.emit('feed.update', Feeds.where({'url':route})[0]);
-                }
+                if(route && Feeds.get(route))
+                    app.core.mediator.emit('feed.update', Feeds.get(route));
             };
             app.sandbox.loaded = def.promise();
             app.core.mediator.on('navigate', update);

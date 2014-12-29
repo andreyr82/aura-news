@@ -1,6 +1,6 @@
 <ul>
     <% feeds.forEach(function(model) { %>
-    <a href="#<%= model.get('url') %>">
+    <a href="#<%= model.id %>">
         <li class="withripple feed" data-url="<%= model.get('url') %>">
             <img class="fav" height='16' width='16'
                  src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>">

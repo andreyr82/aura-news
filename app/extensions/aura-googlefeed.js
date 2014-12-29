@@ -28,9 +28,11 @@ define({
             });
         });
         app.core.mediator.on('feed.update', function (feed) {
-            feedProcess(loadURL, feed.get('url'), function (result) {
-                app.core.mediator.emit('feed.loaded', result.responseData.feed.entries);
-            });
+            if(feed) {
+                feedProcess(loadURL, feed.get('url'), function (result) {
+                    app.core.mediator.emit('feed.loaded', result.responseData.feed.entries);
+                });
+            }
         });
     }
 });

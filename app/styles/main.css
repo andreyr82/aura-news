@@ -13,7 +13,7 @@
 
 .header-panel {
     background-color: #009587;
-    height: 70px;
+    /*height: 70px;*/
     position: fixed;
     width:100%;
     z-index: 99;
@@ -27,10 +27,16 @@
 
 .menu{
     position: fixed !important;
+    z-index: 9;
     top: 90px;
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    background: #eee;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .menu, .menu * {
@@ -244,6 +250,10 @@
     /*transform: translate3d(0px, 0px, 0px) rotateX(0)  scale(1, 1);*/
     /*opacity: 1;*/
 /*}*/
+
+.search {
+    height: 66px;
+}
 
 .search .form-group {
     position: absolute;

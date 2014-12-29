@@ -11,6 +11,8 @@ define(['underscore', 'text!./feeds.hbs'], function (_, tpl) {
         },
         deleteFeed: function(e) {
             this.sandbox.emit('feed.destroy', e.currentTarget.dataset.id);
+            if(e.currentTarget.dataset.id == Backbone.history.fragment)
+                Backbone.history.navigate('', {trigger:true});
         },
         render: function (feeds) {
             this.html(template({'feeds': feeds}));
