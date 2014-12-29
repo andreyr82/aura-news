@@ -1,2 +1,14 @@
 <ul>
+    <% feeds.forEach(function(model) { %>
+    <a href="#<%= model.get('url') %>">
+        <li class="withripple feed" data-url="<%= model.get('url') %>">
+            <img class="fav" height='16' width='16'
+                 src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>">
+            <%= model.get('title') %>
+            <button type="button" class="close" data-id="<%= model.id %>"><span aria-hidden="true">×</span><span
+                    class="sr-only">Close</span></button>
+
+        </li>
+    </a>
+    <% }); %>
 </ul>
