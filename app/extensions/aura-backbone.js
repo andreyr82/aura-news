@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'router/router'], function(Backbone, Router) {
     return function(app) {
         var _ = app.core.util._;
         var historyStarted = false;
@@ -7,11 +7,10 @@ define(['backbone'], function(Backbone) {
                 app.components.addType('Backbone', Backbone.View.prototype);
             },
             afterAppStart: function(app) {
-                if (!historyStarted) {
-                    _.delay(function() {
-                        Backbone.history.start();
-                    }, 200);
-                }
+                $.when(app.sandbox.loaded).done(function() {
+                    app.sandbox.router = new Router(app);
+                    Backbone.history.start();
+                });
             }
         }
     }
