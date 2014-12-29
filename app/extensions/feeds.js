@@ -1,7 +1,7 @@
 /**
  * Created by Андрей on 24.12.2014.
  */
-define(['collections/feeds'], function (FeedsCollection) {
+define(['collections/feeds', 'backbone'], function (FeedsCollection, Backbone) {
     return {
         initialize: function (app) {
             var def = new $.Deferred();
@@ -26,8 +26,10 @@ define(['collections/feeds'], function (FeedsCollection) {
                 app.core.mediator.emit('feed.destroyed', Feeds);
             };
             var update = function(route) {
-                if(route && Feeds.get(route))
+                if(Feeds.get(route))
                     app.core.mediator.emit('feed.update', Feeds.get(route));
+                else
+                    Backbone.history.navigate('', {trigger:true});
             };
             app.sandbox.loaded = def.promise();
             app.core.mediator.on('navigate', update);

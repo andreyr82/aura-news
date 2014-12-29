@@ -1,7 +1,7 @@
 /**
  * Created by Андрей on 19.12.2014.
  */
-define(['underscore', 'text!./button.hbs'], function(_, tpl) {
+define(['underscore', 'text!./button.hbs', 'backbone'], function(_, tpl, Backbone) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',
@@ -9,7 +9,7 @@ define(['underscore', 'text!./button.hbs'], function(_, tpl) {
             'click button' : 'update'
         },
         update: function () {
-            //this.sandbox.emit('feed.update', 'http://habrahabr.ru/rss/best/');
+            this.sandbox.emit('navigate', Backbone.history.fragment);
         },
         initialize: function() {
             this.html(template());
