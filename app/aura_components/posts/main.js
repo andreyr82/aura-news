@@ -12,6 +12,7 @@ define(['underscore', 'text!./post.hbs'], function (_, tpl) {
         },
         render:function(collection) {
             this.html('');
+            $(document).scrollTop(0);
             collection.forEach(this.addOne, this);
         },
         addOne:function(post){
