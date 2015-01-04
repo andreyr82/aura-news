@@ -7,7 +7,11 @@
     "backbone.localStorage": "latest",
     "backbone": "0.9.10",
     "bootstrap": "latest",
-    "bootstrap-material-design": "latest"
+    "bootstrap-material-design": "latest",
+    "polymer": "Polymer/polymer#~0.5.2",
+    "font-roboto": "Polymer/font-roboto#~0.5.2",
+    "core-icon-button": "Polymer/core-icon-button#~0.5.2",
+    "paper-input": "Polymer/paper-input#~0.5.2"
   },
   "resolutions": {
     "backbone": "~1.0.0",
