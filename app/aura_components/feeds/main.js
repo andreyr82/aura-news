@@ -24,9 +24,9 @@ define(['underscore', 'text!./feeds.hbs', 'backbone'], function (_, tpl, Backbon
         setActive: function(id) {
             this.$find('a.feed').each(function(idx, el) {
                 if(el.hash.substr(1) == id)
-                    $(el).find('li').addClass('active');
+                    $(el).find('paper-item').addClass('core-selected');
                 else
-                    $(el).find('li').removeClass('active');
+                    $(el).find('paper-item').removeClass('core-selected');
             });
         },
         initialize: function () {

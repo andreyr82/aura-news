@@ -1,13 +1,14 @@
 <link href="./bower_components/paper-item/paper-item.html" rel="import">
 <% feeds.forEach(function(model) { %>
-
-    <paper-item>
-        <a class="feed" href="#<%= model.id %>" layout horizontal>
+<a class="feed" href="#<%= model.id %>">
+    <paper-item class="hover" layout start>
         <img class="fav"
-             src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>">
-        <%= model.get('title') %>
-        <button type="button" class="close" data-id="<%= model.id %>"><span aria-hidden="true">×</span><span
+             src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>" self-start>
+        <div self-start>
+            <%= model.get('title') %>
+        </div>
+        <button type="button" class="close" data-id="<%= model.id %>" self-start><span aria-hidden="true">×</span><span
                 class="sr-only">Close</span></button>
-        </a>
     </paper-item>
+</a>
 <% }); %>
