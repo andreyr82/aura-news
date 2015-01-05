@@ -16,7 +16,12 @@ core-toolbar {
 }
 
 .list-group {
+    display: inline-block;
     background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
+}
+
+core-header-panel[drawer] {
+    background-color: rgb(255, 255, 255);
 }
 
 .menu-toggle {
@@ -24,46 +29,32 @@ core-toolbar {
     color: #ffffff;
 }
 
-
-
-.menu, .menu * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-}
-.menu ul {
+.menu {
     padding: 0;
-    margin: 7px 0;
-}
-.menu ul li {
-    list-style: none;
-    padding: 10px 0 10px 20px;
-    font-size: 15px;
-    font-weight: normal;
-    cursor: pointer;
-}
-.menu ul li.active {
-    background-color: #dedede;
-    position: relative;
+    margin: 16px 0;
 }
 
-.menu ul li:hover {
-    background-color: #dedede;
-    position: relative;
+.menu paper-item {
+    font-size: 14px;
 }
 
-.menu ul li a {
-    color: rgb(51, 51, 51);
-    text-decoration: none;
+.menu .fav {
+    margin: 2px 3px;
+    min-width: 14px;
+    height: 14px;
 }
 
-.menu ul li .close {
-    display: none;
-    margin-right: 5px;
+.menu .close {
+    min-width: 14px;
 }
 
-.menu ul li:hover .close {
-    display: block;
+.card {
+    background: white;
+    box-sizing: border-box;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 2px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.23),0 3px 10px rgba(0,0,0,.16);
 }
 
 .pages {
@@ -258,18 +249,14 @@ core-toolbar {
 }
 
 .search .results {
+    background-color: white;
+    font-size: 14px;
     display: none;
     width: 500px;
     overflow-y: auto;
     top: 51px;
-    left: 35px;
     position: absolute;
     z-index: 999;
-}
-
-.fav {
-    width: 16px;
-    height: 16px;
 }
 
 .results .feed {

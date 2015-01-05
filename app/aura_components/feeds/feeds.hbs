@@ -4,7 +4,7 @@
     <paper-item class="hover" layout start>
         <img class="fav"
              src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>" self-start>
-        <div self-start>
+        <div class="feed-title" self-start>
             <%= model.get('title') %>
         </div>
         <button type="button" class="close" data-id="<%= model.id %>" self-start><span aria-hidden="true">×</span><span

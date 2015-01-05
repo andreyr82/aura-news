@@ -24,13 +24,16 @@ require([
         'aura_components/feeds/main',
         'aura_components/feed/main'
     ], function (Aura) {
-    Aura({ debug: { enable: true } })
+    var app = new Aura({ debug: { enable: true } })
         .use('extensions/aura-backbone')
         .use('extensions/aura-googlefeed')
         .use('extensions/backbone-posts')
         .use('extensions/feeds')
-        .use('extensions/find-feeds')
-        .start({ components: 'body' }).then(function () {
-            console.warn('App started...');
-        });
+        .use('extensions/find-feeds');
+    app.start({ components: 'body' }).then(function () {
+        console.warn('App started...');
+        app.sandbox.on('navigate', function() {
+            document.querySelector('core-drawer-panel').closeDrawer();
+        })
+    });
 });
