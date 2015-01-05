@@ -7,7 +7,6 @@ define(['underscore', 'text!./feeds.hbs', 'backbone'], function (_, tpl, Backbon
     return {
         type: 'Backbone',
         events: {
-            'click a.feed' : 'toggleMenu',
             'click button.close' : 'deleteFeed'
         },
         deleteFeed: function(e) {

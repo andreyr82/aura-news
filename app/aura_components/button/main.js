@@ -6,7 +6,7 @@ define(['underscore', 'text!./button.hbs', 'backbone'], function(_, tpl, Backbon
     return {
         type: 'Backbone',
         events: {
-            'click button' : 'update'
+            'click paper-icon-button' : 'update'
         },
         update: function () {
             this.sandbox.emit('navigate', Backbone.history.fragment);

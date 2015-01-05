@@ -8,14 +8,13 @@ define(['underscore', 'text!./search.hbs', 'text!./findfeed.hbs', 'bootstrap'], 
     return {
         type: 'Backbone',
         events: {
-            'click button' : 'find',
-            'click .close' : 'close',
+            'click .search-btn' : 'find',
             'click .results .feed' : 'addFeed',
-            'keyup input' : 'find'
+            'keyup paper-input' : 'find'
         },
         find: function() {
-            if(this.$find('input').val().length >= 3) {
-                this.sandbox.emit('findfeed.find', this.$find('input').val());
+            if(this.$find('paper-input').val().length >= 3) {
+                this.sandbox.emit('findfeed.find', this.$find('paper-input').val());
                 this.$find('.results').show();
             } else {
                 this.$find('.results').hide();
@@ -23,10 +22,14 @@ define(['underscore', 'text!./search.hbs', 'text!./findfeed.hbs', 'bootstrap'], 
         },
         showPopover: function(feeds) {
             if(feeds.length == 0) {
-                this.$find('input').popover({'placement': 'bottom'}).popover('show');
-                this.$find('input').one('click', function(){
-                    $(this).popover('destroy');
-                });
+                this.el.querySelector('core-tooltip').show = true;
+                this.$find('paper-input').one('focus', $.proxy(function(){
+                    this.el.querySelector('core-tooltip').show = false;
+                    this.el.querySelector('core-tooltip').disabled = true;
+                }, this));
+            } else {
+                this.el.querySelector('core-tooltip').show = false;
+                this.el.querySelector('core-tooltip').disabled = true;
             }
         },
         showResults: function(feeds) {
@@ -38,13 +41,9 @@ define(['underscore', 'text!./search.hbs', 'text!./findfeed.hbs', 'bootstrap'], 
                 this.$find('.results').hide();
             }
         },
-        close: function(e) {
-            e.stopPropagation();
-            this.closeResults();
-        },
         closeResults: function() {
             this.$find('.results').hide();
-            this.$find('input').val('');
+            this.$find('paper-input').val('');
         },
         addOne:function(feed) {
             this.$find('.results').append(feedtemplate({model:feed}));

@@ -1,14 +1,13 @@
-<ul>
-    <% feeds.forEach(function(model) { %>
-    <a class="feed" href="#<%= model.id %>">
-        <li class="withripple" data-url="<%= model.get('url') %>">
-            <img class="fav" height='16' width='16'
-                 src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>">
-            <%= model.get('title') %>
-            <button type="button" class="close" data-id="<%= model.id %>"><span aria-hidden="true">×</span><span
-                    class="sr-only">Close</span></button>
+<link href="./bower_components/paper-item/paper-item.html" rel="import">
+<% feeds.forEach(function(model) { %>
 
-        </li>
-    </a>
-    <% }); %>
-</ul>
+    <paper-item>
+        <a class="feed" href="#<%= model.id %>" layout horizontal>
+        <img class="fav"
+             src="http://favicon.yandex.ru/favicon/<%= new URL(model.get('link')).hostname %>">
+        <%= model.get('title') %>
+        <button type="button" class="close" data-id="<%= model.id %>"><span aria-hidden="true">×</span><span
+                class="sr-only">Close</span></button>
+        </a>
+    </paper-item>
+<% }); %>

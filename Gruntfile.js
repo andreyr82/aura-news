@@ -1,197 +1,221 @@
-/*global module:true*/
-var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
-};
-
-var yeomanConfig = {
-  app: 'app',
-  dist: 'dist'
-};
-
-
 module.exports = function (grunt) {
 
-  'use strict';
-
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
-  grunt.initConfig({
-    yeoman: yeomanConfig,
-
-    open: {
-      server: {
-        url: 'http://localhost:<%= connect.livereload.options.port %>'
-      }
-    },
-
-    // default watch configuration
-    watch: {
-      aura_components: {
-        files: ['app/aura_components/**/*.js'],
-        tasks: ['concat']
-      },
-      handlebars: {
-        files: ['app/aura_components/**/*.hbs'],
-        tasks: ['handlebars']
-      },
-      livereload: {
-        files: [
-          'app/*.html',
-          '{.tmp,app}/styles/*.css',
-          '{.tmp,app}/scripts/*.js',
-          'app/images/*.{png,jpg,jpeg}'
-        ],
-        tasks: ['livereload']
-      }
-    },
-
-    jshint: {
-      all: [
-        'app/scripts/[^templates].js',
-        'app/aura_components/**/*.js'
-      ]
-    },
-
-    handlebars: {
-      compile: {
-        files: {
-          "app/scripts/templates.js" : ["app/aura_components/**/*.hbs"]
+    grunt.initConfig({
+        clean: ["build"],
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: "./app",
+                    removeCombined: true,
+                    mainConfigFile: "app/app.js",
+                    findNestedDependencies: true,
+                    fileExclusionRegExp: /^\./,
+                    out: "build/app.js",
+                    name: 'app',
+                    paths: {
+                        text:         'bower_components/requirejs-text/text',
+                        jquery:     'bower_components/jquery/dist/jquery',
+                        backbone: 'bower_components/backbone/backbone-min',
+                        backboneLocalstorage: 'bower_components/backbone.localStorage/backbone.localStorage',
+                        underscore: 'bower_components/underscore/underscore-min',
+                        //bootstrap: 'bower_components/bootstrap/dist/js/bootstrap'
+                    },
+                    shim: {
+                        underscore: { exports: '_' },
+                        backbone: { exports: 'Backbone', deps: ['underscore', 'jquery'] },
+                        backboneLocalstorage: { exports: 'Store', deps: ['backbone'] },
+                        //bootstrap: { deps: ['jquery'] }
+                    },
+                    include: [
+                    //    'underscore',
+                    //    'bower_components/aura/lib/aura',
+                    //    //'bootstrap',
+                    //    'aura_components/spinner/main',
+                    //    'aura_components/title/main',
+                    //    'aura_components/button/main',
+                    //    'aura_components/search/main',
+                    //    'aura_components/posts/main',
+                    //    'aura_components/post/main',
+                    //    'aura_components/feeds/main',
+                    //    'aura_components/feed/main'
+                    ],
+                    exclude: [
+                        'jquery',
+                        'bootstrap'
+                    ]
+                }
+            }
         },
-        options: {
-          wrapped: true,
-          namespace: "Handlebars.templates",
-          processName: function (filename) {
-            return filename.replace(/^app\/aura_components\//, '').replace(/\.hbs$/, '');
-          }
-        }
-      }
-    },
-
-    connect: {
-      livereload: {
-        options: {
-          port: 9032,
-          middleware: function (connect) {
-            return [
-              lrSnippet,
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'app')
-            ];
-          }
-        }
-      }
-    },
-
-    clean: {
-      dist: ['.tmp', 'dist/*'],
-      server: '.tmp'
-    },
-    uglify: {
-      dist: {
-        files: {
-          'dist/application.js': [
-            'app/scripts/*.js'
-          ]
-        }
-      }
-    },
-    useminPrepare: {
-      html: 'index.html'
-    },
-    usemin: {
-      html: ['dist/*.html'],
-      css: ['dist/styles/*.css']
-    },
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: 'app/images',
-          src: '*.{png,jpg,jpeg}',
-          dest: 'dist/images'
-        }]
-      }
-    },
-    cssmin: {
-      dist: {
-        files: {
-          'dist/css/application.css': [
-            'app/styles/*.css'
-          ]
-        }
-      }
-    },
-
-    copy: {
-      dist: {
-        files: [
-          { dest: 'dist/index.php', src: 'dist/index.html' },
-          { cwd: 'app/', dest: 'dist/', src: ['.htaccess', 'robots.txt'], expand: true }
-        ]
-      }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          removeComments: false,
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: false,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: false,
-          removeRedundantAttributes: false,
-          useShortDoctype: true,
-          removeEmptyAttributes: false,
-          removeOptionalTags: false
+        copy: {
+            main: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app',
+                        src: [
+                            'index.html',
+                            '404.html',
+                            //'aura_components/**/*',
+                            'bower_components/**/*',
+                            'extensions/**/*',
+                            'collections/*',
+                            'models/*'
+                        ],
+                        dest: 'build/'
+                    }
+                ]
+            }
         },
-        files: [{
-          expand: true,
-          cwd: 'app',
-          src: '*.html',
-          dest: 'dist'
-        }]
-      }
-    },
+        //imagemin: {
+        //    dynamic: {
+        //        files: [{
+        //            expand: true,
+        //            cwd: 'img/',
+        //            src: ['**/*.{png,jpg,gif}'],
+        //            dest: 'build/img'
+        //        }]
+        //    }
+        //},
+        useminPrepare: {
+            html: ['build/index.html'],
+            options: {
+                root: '.',
+                dest: 'build'
+            }
+        },
+        cssmin: {
+            dist: {
+                files: {
+                    'application.css': [
+                        'styles/main.css',
+                        'bower_components/bootstrap/dist/css/bootstrap.css',
+                        'bower_components/bootstrap-material-design/dist/css/material-wfont.min.css',
+                        'bower_components/bootstrap-material-design/dist/css/ripples.min.css'
+                    ]
+                }
+            }
+        },
+        usemin: {
+            html: ['build/index.html'],
+            options: {
+                root: '.',
+                dest: 'build'
+            }
+        },
+        replace: {
+            appbuild: {
+                src: ['build/index.html'],
+                overwrite: true,
+                replacements: [{
+                    from: 'app/app',
+                    to: "js/app.build"
+                }]
+            },
+            cssversion: {
+                src: ['build/index.html'],
+                overwrite: true,
+                replacements: [{
+                    from: '__VERSION__',
+                    to: "<%= grunt.template.today('yyyymmddHHss') %>"
+                }]
+            },
+            csscombinedversion: {
+                src: ['build/index.html'],
+                overwrite: true,
+                replacements: [{
+                    from: '.application.css',
+                    to: ".application.css?v=<%= grunt.template.today('yyyymmddHHss') %>"
+                }]
+            },
+            requirejsversion: {
+                src: ['build/index.html'],
+                overwrite: true,
+                replacements: [{
+                    from: '"bust="+Math.random()',
+                    to: '"bust=<%= grunt.template.today(\'yyyymmddHHss\') %>"'
+                }]
+            }
+        },
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {
+                    'build/index.html': 'build/index.html'
+                }
+            }
+        },
+        'template-module': {
+            compile: {
+                options: {
+                    module: true,
+                    useStrict: true,
+                    provider: 'underscore',
+                    processName: function (filename) {
+                        return filename.replace(/^app\//, '');
+                    }
+                },
+                files: {
+                    "build/scripts/templates.js" : ["app/aura_components/**/*.hbs"]
+                }
+            }
+        }
+        //jst: {
+        //    compile: {
+        //        options: {
+        //            //templateSettings: {
+        //            //    interpolate : /\{\{(.+?)\}\}/g
+        //            //},
+        //            //processName: function (filename) {
+        //            //    return filename.replace(/^app\/aura_components\//, '').replace(/\.hbs$/, '');
+        //            //}
+        //        },
+        //        files: {
+        //            "build/scripts/templates.js" : ["app/aura_components/**/*.hbs"]
+        //        }
+        //    }
+        //}
+        //handlebars: {
+        //    compile: {
+        //        files: {
+        //            "build/scripts/templates.js" : ["app/aura_components/**/*.hbs"]
+        //        },
+        //        options: {
+        //            wrapped: false,
+        //            namespace: "Aura.templates",
+        //            //processName: function (filename) {
+        //            //    return filename.replace(/^app\/aura_components\//, '').replace(/\.hbs$/, '');
+        //            //},
+        //            //amd: true,
+        //            //partialsUseNamespace: true
+        //        }
+        //    }
+        //},
+        //concat: {
+        //    options: {
+        //        separator: "\n\n\n\n//--------\n\n\n"
+        //    },
+        //    dist: {
+        //        src: ['app/aura_components/**/*.js'],
+        //        dest: 'build/scripts/aura_components.js'
+        //    }
+        //}
+    });
 
-    concat: {
-      options: {
-        separator: "\n\n\n\n//--------\n\n\n"
-      },
-      dist: {
-        src: ['app/aura_components/**/*.js'],
-        dest: 'app/scripts/aura_components.js'
-      }
-    }
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-template-module');
+    //grunt.loadNpmTasks('grunt-contrib-jst');
+    //grunt.loadNpmTasks('grunt-contrib-handlebars');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    //grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-usemin');
 
-  });
-
-  grunt.registerTask('server', [
-    'clean:server',
-    'livereload-start',
-    'connect:livereload',
-    'open',
-    'watch'
-  ]);
-
-  grunt.registerTask('test', [
-    'clean:server',
-    'connect:livereload',
-    'watch'
-  ]);
-
-  grunt.registerTask('build', [
-    'clean:dist',
-    'concat',
-    'jshint',
-    'useminPrepare',
-    'uglify',
-    'imagemin',
-    'htmlmin',
-    'cssmin',
-    'usemin',
-    'copy'
-  ]);
-
-  grunt.registerTask('default', ['build']);
-
+    grunt.registerTask('default', ['clean', 'template-module', 'requirejs', 'copy', 'useminPrepare', 'concat', 'cssmin', 'usemin', 'replace', 'htmlmin']);
 };

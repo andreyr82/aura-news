@@ -6,6 +6,9 @@ define(['collections/feeds', 'backbone'], function (FeedsCollection, Backbone) {
         initialize: function (app) {
             var def = new $.Deferred();
             var Feeds = new FeedsCollection;
+            app.sandbox.mvc = app.sandbox.mvc || {};
+            app.sandbox.mvc.collections = app.sandbox.mvc.collections || {};
+            app.sandbox.mvc.collections['Feeds'] = Feeds;
             var load = function () {
                 Feeds.fetch({
                     success: function () {

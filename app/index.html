@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Feed reader</title>
     <!-- build:css application.css -->
@@ -12,36 +12,28 @@
     <script data-main="app" src="./bower_components/requirejs/require.js"></script>
     <script src="./bower_components/webcomponentsjs/webcomponents.js"></script>
     <link href="./bower_components/font-roboto/roboto.html" rel="import">
-    <link href="./bower_components/paper-input/paper-input.html" rel="import">
-  </head>
-  <body>
-    <div data-aura-component="spinner"></div>
-    <div class="header-panel shadow-z-2">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 col-xs-12 search">
-                    <div data-aura-component="search"></div>
-                </div>
-                <div class="col-md-9 col-xs-12 update-button">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div data-aura-component="button" class="button"></div>
-                    <div data-aura-component="title" class="title"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-        <nav class="col-sm-3 col-xs-9 menu">
-            <div data-aura-component="feeds"></div>
-        </nav>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3 pages">
+    <link href="./bower_components/core-drawer-panel/core-drawer-panel.html" rel="import">
+    <link href="./bower_components/core-header-panel/core-header-panel.html" rel="import">
+    <link href="./bower_components/core-toolbar/core-toolbar.html" rel="import">
+    <link href="./bower_components/paper-icon-button/paper-icon-button.html" rel="import">
+</head>
+<body>
+<div data-aura-component="spinner"></div>
+<core-drawer-panel  transition drawerwidth="300px" responsivewidth="768px" selected="main" id="core_drawer_panel" touch-action>
+    <core-header-panel drawer>
+        <core-toolbar>
+            <div data-aura-component="search" class="search"></div>
+        </core-toolbar>
+        <<div data-aura-component="feeds" class="menu"></div>
+    </core-header-panel>
+    <core-header-panel main>
+        <core-toolbar>
+            <paper-icon-button icon="menu" class="menu-toggle" core-drawer-toggle></paper-icon-button>
+            <div data-aura-component="button" class="button"></div>
+            <div data-aura-component="title" class="title"></div>
+        </core-toolbar>
         <div data-aura-component="posts" class="list-group"></div>
-    </div>
-  </body>
+    </core-header-panel>
+</core-drawer-panel>
+</body>
 </html>
