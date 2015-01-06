@@ -11,13 +11,17 @@
     clear: both;
 }
 
+core-drawer-panel {
+    background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
+}
+
 core-toolbar {
     background-color: rgb(79, 125, 201);
 }
 
 .list-group {
-    display: inline-block;
-    background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
+    /*display: inline-block;*/
+    transform: translateZ(0);
 }
 
 core-header-panel[drawer] {
