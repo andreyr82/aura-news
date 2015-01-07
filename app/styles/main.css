@@ -52,6 +52,10 @@ core-header-panel[drawer] {
     min-width: 14px;
 }
 
+.menu .feed-title {
+    width: 238px;
+}
+
 .card {
     background: white;
     box-sizing: border-box;
