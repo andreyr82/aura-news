@@ -12,10 +12,11 @@ define(['underscore', 'text!./post.hbs'], function (_, tpl) {
         },
         render:function(collection) {
             var content = '';
-
             collection.forEach(function(post){
                 content += template({model:post});
             }, this);
+            this.el.innerHTML = '';
+            this.el.offsetParent.scrollTop = 0;
             this.el.innerHTML = content;
         }
     };
