@@ -2,6 +2,9 @@ define(['underscore', 'text!./post.hbs'], function (_, tpl) {
     var template = _.template(tpl);
     return {
         type: 'Backbone',
+        events: {
+            'click .card': 'scroll'
+        },
         initialize: function () {
             this.sandbox.on('posts.updated', this.render, this);
             this.sandbox.on('navigate', this.clear, this);
@@ -9,6 +12,9 @@ define(['underscore', 'text!./post.hbs'], function (_, tpl) {
         clear: function(route) {
             if(!route)
                 this.html('');
+        },
+        scroll: function(e) {
+            e.currentTarget.scrollIntoView();
         },
         render:function(collection) {
             var content = '';
