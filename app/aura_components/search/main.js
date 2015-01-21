@@ -46,7 +46,8 @@ define(['underscore', 'text!./search.hbs', 'text!./findfeed.hbs', 'bootstrap'], 
             this.$find('paper-input').val('');
         },
         addOne:function(feed) {
-            this.$find('.results').append(feedtemplate({model:feed}));
+            if(feed.get('url'))
+                this.$find('.results').append(feedtemplate({model:feed}));
         },
         addFeed: function(e) {
             this.sandbox.emit('feed.add', this.sandbox.mvc.collections.FindFeeds.get(e.currentTarget.dataset.cid));
